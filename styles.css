@@ -1,0 +1,649 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  :root {
+    --duration: 1s;
+    --ease: ease-in-out;
+    --transition: all var(--duration) var(--ease);
+    --blue: #7aded8;
+    --yellow: #ffdb63;
+    --red: #f2718c;
+    --purple: #423e58;
+  }
+  
+  #repeat {
+    z-index: 10;
+    position: fixed;
+    bottom: 3%;
+    right: 3%;
+    font-size: 3rem;
+    color: var(--purple);
+    padding: 0.3em;
+    border-radius: 0.2em;
+    cursor: pointer;
+    transition: all 0.3s;
+    opacity: 0;
+  }
+  #repeat.show {
+    opacity: 1;
+  }
+  #repeat:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+  
+  #wrapper {
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    transition: var(--transition);
+  }
+  #wrapper > div {
+    position: absolute;
+    transition: var(--transition);
+  }
+  #wrapper .first-qtr {
+    background-color: var(--blue);
+    bottom: 50%;
+    right: 50%;
+    top: -100%;
+    left: -100%;
+  }
+  #wrapper .second-qtr {
+    background-color: #f7e4d8;
+    left: 50%;
+    right: -100%;
+    bottom: 50%;
+    top: -100%;
+  }
+  #wrapper .third-qtr {
+    background-color: #4dc0ca;
+    top: 50%;
+    bottom: -100%;
+    left: -100%;
+    right: 50%;
+  }
+  #wrapper .fourth-qtr {
+    background-color: #f67690;
+    top: 50%;
+    left: 50%;
+    right: -100%;
+    bottom: -100%;
+  }
+  
+  #inner-wrapper {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: var(--transition);
+  }
+  
+  #main {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+  }
+  #main.toucan #wrapper .third-qtr,
+  #main.toucan #wrapper .fourth-qtr {
+    top: calc(30% + 7rem);
+    transition: all calc(var(--duration) / 2) var(--ease);
+  }
+  #main.whale #wrapper {
+    transform: translate(-50%, -50%) rotate(270deg);
+  }
+  #main.whale #wrapper .third-qtr,
+  #main.whale #wrapper .fourth-qtr {
+    top: 50%;
+  }
+  #main.whale #inner-wrapper {
+    --whale-body-width: 30rem;
+    transform: translate(-50%, -50%) rotate(270deg);
+  }
+  #main.whale #inner-wrapper .body {
+    border-radius: 100% 0% 0% 100% / 40% 20% 20% 40%;
+    height: var(--whale-body-width);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  #main.whale #inner-wrapper .body .head {
+    right: calc(var(--whale-body-width) * 0.1);
+    height: calc( var(--whale-body-width) / 2 - 4rem );
+  }
+  #main.whale #inner-wrapper .sun::before {
+    right: 50%;
+  }
+  #main.whale #inner-wrapper .wing::before {
+    right: calc(var(--whale-body-width) * 0.1);
+    transform: translateX(0);
+  }
+  #main.whale #inner-wrapper .eye {
+    top: 100%;
+  }
+  #main.whale #inner-wrapper .eye span {
+    top: -50%;
+  }
+  #main.whale #inner-wrapper .toucan-beak {
+    top: calc(50% - 7rem);
+  }
+  #main.whale #inner-wrapper .toucan-beak .beak-inner {
+    top: 100%;
+  }
+  #main.whale #inner-wrapper .tail1 {
+    top: calc(50% + var(--whale-body-width) / 2);
+    height: 10rem;
+    width: 4rem;
+    background-color: var(--yellow);
+  }
+  #main.whale #inner-wrapper .tail2::before {
+    bottom: 0;
+  }
+  #main.fox #wrapper {
+    transform: translate(-50%, -50%) rotate(540deg);
+  }
+  #main.fox #wrapper .second-qtr {
+    bottom: calc(50% - 10rem);
+    transition: all calc(var(--duration) / 2) var(--ease);
+  }
+  #main.fox #wrapper .fourth-qtr {
+    top: calc(50% + 10rem);
+    bottom: -100%;
+    right: -100%;
+    left: calc(50% - 10rem);
+    transition: all calc(var(--duration) / 2) var(--ease);
+  }
+  #main.fox #inner-wrapper {
+    transform: translate(-50%, -50%) rotate(540deg) !important;
+  }
+  #main.fox #inner-wrapper .fox-head {
+    transform: rotate(45deg) scale(1);
+  }
+  #main.fox #inner-wrapper .fox-head .eyes span {
+    top: 32%;
+    left: 7%;
+  }
+  #main.fox #inner-wrapper .fox-head .eyes span:nth-child(2) {
+    top: 7%;
+    left: 32%;
+  }
+  #main.fox #inner-wrapper .fox-ears span {
+    top: 0;
+  }
+  #main.fox #inner-wrapper .sun {
+    height: 10rem;
+    width: 15rem;
+    transition: var(--transition);
+  }
+  #main.fox #inner-wrapper .sun::before {
+    border-radius: 100% 0% 75% 0% / 0% 0% 100% 100% !important;
+    right: 0 !important;
+    transition: var(--transition);
+  }
+  #main.fox #inner-wrapper .body {
+    height: 20rem !important;
+    width: 20rem;
+    border-radius: 50% 0% 0% 50% / 50% 50% 50% 50% !important;
+    background-color: var(--yellow);
+    transition: all calc(var(--duration) / 2) var(--ease);
+  }
+  #main.fox #inner-wrapper .body .head {
+    right: 0 !important;
+    top: 0% !important;
+    height: 50% !important;
+    transition-delay: unset;
+  }
+  #main.fox #inner-wrapper .wing::before {
+    transform: translateX(-200%) !important;
+    transition-delay: unset;
+  }
+  #main.fox #inner-wrapper .tail1 {
+    top: 150% !important;
+    transition: all calc(var(--duration) / 2) var(--ease);
+  }
+  #main.fox #inner-wrapper .tail2::before {
+    bottom: 100% !important;
+    transition-delay: unset;
+  }
+  #main.toucan2 #wrapper {
+    transform: translate(-50%, -50%) rotate(720deg);
+  }
+  #main.toucan2 #wrapper .third-qtr,
+  #main.toucan2 #wrapper .fourth-qtr {
+    top: calc(30% + 7rem);
+  }
+  #main.toucan2 #wrapper .fourth-qtr {
+    left: 50%;
+  }
+  #main.toucan2 #wrapper .second-qtr {
+    bottom: 50%;
+  }
+  #main.toucan2 #inner-wrapper {
+    transform: translate(-50%, -50%) rotate(720deg) !important;
+  }
+  #main.toucan2 #inner-wrapper .toucan-beak {
+    top: 30%;
+    transition-delay: calc(var(--duration) / 2);
+  }
+  #main.toucan2 #inner-wrapper .toucan-beak .beak-inner {
+    top: 0;
+    transition-delay: calc(var(--duration) / 2);
+  }
+  #main.toucan2 #inner-wrapper .sun::before {
+    right: 100% !important;
+    transition: all calc(var(--duration) / 2) var(--ease);
+  }
+  #main.toucan2 #inner-wrapper .body {
+    height: 20rem !important;
+    width: 10rem;
+    position: absolute;
+    top: 30%;
+    background-color: var(--purple);
+    border-radius: 100% 0% 0% 100% / 50% 50% 50% 50% !important;
+    transition: var(--transition);
+    transform: translateY(0);
+  }
+  #main.toucan2 #inner-wrapper .body .eye {
+    top: 8%;
+  }
+  #main.toucan2 #inner-wrapper .body .eye span {
+    top: 10%;
+  }
+  #main.toucan2 #inner-wrapper .body .head {
+    height: 7rem !important;
+  }
+  #main.toucan2 #inner-wrapper .fox-head {
+    transform: rotate(45deg) scale(0);
+    transition-delay: calc(var(--duration) / 2);
+    top: 45%;
+  }
+  #main.toucan2 #inner-wrapper .fox-head .eyes span {
+    top: 20%;
+    left: -10%;
+    transition-delay: unset;
+  }
+  #main.toucan2 #inner-wrapper .fox-head .eyes span:nth-child(2) {
+    top: -10%;
+    left: 20%;
+  }
+  #main.toucan2 #inner-wrapper .fox-ears span {
+    transition: all calc(var(--duration) / 2) var(--ease);
+    top: -100%;
+    transition-delay: unset;
+  }
+  #main.toucan2 #inner-wrapper .tail1 {
+    top: calc(30% + 16.6rem) !important;
+    height: 13rem;
+    width: 5rem;
+    background-color: var(--purple);
+    transition: var(--transition);
+  }
+  
+  .part.fox-head {
+    height: 15rem;
+    width: 15rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: rotate(45deg) scale(0);
+    z-index: 5;
+    overflow: hidden;
+    transform-origin: top left;
+    transition: all calc(var(--duration) / 2) var(--ease);
+  }
+  .part.fox-head .head {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-22%, -72%) rotate(45deg);
+    background-color: var(--purple);
+    width: 200%;
+    height: 200%;
+    transform-origin: top left;
+  }
+  .part.fox-head .eyes {
+    height: 100%;
+    width: 100%;
+  }
+  .part.fox-head .eyes span {
+    height: 1rem;
+    width: 1rem;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 20%;
+    left: -10%;
+    transition: all calc(var(--duration) / 2) var(--ease);
+    transition-delay: calc(var(--duration) / 2);
+  }
+  .part.fox-head .eyes span:nth-child(2) {
+    top: -10%;
+    left: 20%;
+  }
+  .part.fox-ears {
+    position: absolute;
+    bottom: calc(50% - 10rem);
+    left: 50%;
+    transform: translate(-50%, 100%);
+    height: 6rem;
+    width: 20rem;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+    z-index: 5;
+  }
+  .part.fox-ears span {
+    background-color: var(--yellow);
+    height: 5rem;
+    width: 5rem;
+    border-radius: 0 0 0 100%;
+    position: relative;
+    display: inline-block;
+    top: -100%;
+    transition: all calc(var(--duration) / 2) var(--ease);
+    transition-delay: calc(var(--duration) / 2);
+  }
+  .part.fox-ears span:nth-child(1) {
+    border-radius: 0 0 100% 0;
+    background-color: white;
+  }
+  .part.toucan-beak {
+    height: 7rem;
+    width: 14rem;
+    overflow: hidden;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transition: all calc(var(--duration) / 2) var(--ease);
+  }
+  .part.toucan-beak .beak-inner {
+    height: 7rem;
+    width: 14rem;
+    background-color: var(--yellow);
+    border-radius: 0 8rem 0 0;
+    transition: all calc(var(--duration) / 2) var(--ease);
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .part.body {
+    height: 20rem;
+    width: 10rem;
+    position: absolute;
+    top: 30%;
+    right: 50%;
+    overflow: hidden;
+    background-color: var(--purple);
+    border-radius: 100% 0% 0% 100% / 50% 50% 50% 50%;
+    transition: var(--transition);
+  }
+  .part.body .eye {
+    border-radius: 100% 0% 0% 100% / 50% 50% 50% 50%;
+    height: calc(20rem * 0.75);
+    width: calc(10rem * 0.7);
+    background-color: white;
+    position: absolute;
+    top: 8%;
+    right: 0;
+    overflow: hidden;
+    z-index: 1;
+    transition: var(--transition);
+  }
+  .part.body .eye span {
+    height: 1.3rem;
+    width: 1.3rem;
+    background-color: var(--purple);
+    position: absolute;
+    top: 10%;
+    right: 15%;
+    border-radius: 50%;
+    transition: var(--transition);
+  }
+  .part.body .whale-eye {
+    height: 1.3rem;
+    width: 1.3rem;
+    background-color: white;
+    position: absolute;
+    top: 10%;
+    right: 18%;
+    border-radius: 50%;
+    transition: var(--transition);
+  }
+  .part.body .head {
+    top: 0;
+    background-color: var(--red);
+    height: 7rem;
+    width: 100%;
+    right: 0;
+    position: absolute;
+    transition: all calc(var(--duration) / 2) var(--ease);
+    transition-delay: calc(var(--duration) / 2);
+  }
+  .part.sun {
+    position: absolute;
+    height: 20rem;
+    width: 20rem;
+    left: 50%;
+    bottom: 50%;
+    overflow: hidden;
+  }
+  .part.sun::before {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    right: 100%;
+    top: 0;
+    background-color: white;
+    border-radius: 50%;
+    content: "";
+    transition: all calc(var(--duration) / 2) var(--ease);
+    transition-delay: calc(var(--duration) / 2);
+  }
+  .part.wing {
+    height: 4rem;
+    width: 15rem;
+    overflow: hidden;
+    position: absolute;
+    top: calc(50% - 4rem);
+    right: 50%;
+    z-index: 1;
+  }
+  .part.wing::before {
+    position: absolute;
+    height: 4rem;
+    width: 12rem;
+    border-radius: 40% 0% 40% 0% / 100% 0% 100% 0%;
+    transition: all calc(var(--duration) / 2) var(--ease);
+    transition-delay: calc(var(--duration) / 2);
+    background-color: var(--yellow);
+    right: 0;
+    bottom: 0;
+    content: "";
+    transform: translateX(100%);
+  }
+  .part.tail1 {
+    height: 13rem;
+    width: 5rem;
+    background-color: var(--purple);
+    position: absolute;
+    top: calc(30% + 16.6rem);
+    left: 50%;
+    border-radius: 0% 100% 0% 100% / 0% 40% 0% 40%;
+    transition: var(--transition);
+  }
+  .part.tail2 {
+    height: calc(var(--whale-body-width) / 2);
+    width: 4rem;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+  .part.tail2::before {
+    position: absolute;
+    height: 10rem;
+    width: 100%;
+    border-radius: 100% 0% 100% 0% / 40% 60% 40% 0%;
+    transition: all calc(var(--duration) / 2) var(--ease);
+    transition-delay: calc(var(--duration) / 2);
+    background-color: var(--blue);
+    right: 0;
+    bottom: 100%;
+    content: "";
+  }
+  
+  #other-work-container {
+    font-family: "Roboto", "Arial", sans-serif;
+    user-select: none;
+    position: fixed;
+    top: 3%;
+    right: 3%;
+    top: 0;
+    right: 0;
+    width: 30rem;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 15;
+    pointer-events: none;
+    opacity: 0;
+    transition: all 0.3s;
+  }
+  #other-work-container.show {
+    opacity: 1;
+  }
+  #other-work-container .title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size: 4rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: rgba(102, 104, 121, 0.1);
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    transition-delay: 0s;
+  }
+  #other-work-container .menu-icon {
+    height: 4rem;
+    width: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+    align-items: center;
+    color: #666879;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    pointer-events: initial;
+  }
+  #other-work-container .menu-icon span {
+    background-color: #666879;
+    height: 0.1em;
+    width: 40%;
+    display: inline-block;
+    font-size: 1.3rem;
+    transition: all 0.3s;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+  }
+  #other-work-container .menu-icon span:nth-child(1) {
+    top: 37%;
+  }
+  #other-work-container .menu-icon span:nth-child(2) {
+    top: 50%;
+  }
+  #other-work-container .menu-icon span:nth-child(3) {
+    top: 63%;
+  }
+  #other-work-container .menu-bg {
+    background-color: #acddde;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    z-index: -1;
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+    box-shadow: 0rem 0.2rem 0.3rem 0 rgba(170, 170, 170, 0.2);
+    transition: all 0.3s ease-in-out;
+  }
+  #other-work-container[data-show="true"] {
+    pointer-events: initial;
+  }
+  #other-work-container[data-show="true"] .title {
+    opacity: 1;
+    transition: all 0.2s linear 0.3s;
+  }
+  #other-work-container[data-show="true"] .menu-bg {
+    transform: scale(50);
+  }
+  #other-work-container[data-show="true"] .menu-icon span {
+    top: 50%;
+    left: 50%;
+    width: 70%;
+  }
+  #other-work-container[data-show="true"] .menu-icon span:nth-child(1) {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  #other-work-container[data-show="true"] .menu-icon span:nth-child(2) {
+    opacity: 0;
+  }
+  #other-work-container[data-show="true"] .menu-icon span:nth-child(3) {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+  #other-work-container .work-list {
+    position: absolute;
+    top: 10%;
+    width: 100%;
+    display: block;
+    flex-direction: column;
+    text-align: right;
+    padding: 2rem;
+    box-sizing: border-box;
+  }
+  #other-work-container .work-list a {
+    font-size: 1.5rem;
+    text-decoration: none;
+    padding: 1rem 0;
+    text-transform: uppercase;
+    color: rgba(102, 104, 121, 0.5);
+    color: #666879;
+    transition: all 0s;
+    opacity: 0;
+    transform: translateY(-2em);
+    margin-bottom: 1rem;
+    display: inline-block;
+    text-shadow: 0rem 0rem 0rem transparent;
+  }
+  #other-work-container .work-list a::after {
+    position: absolute;
+    top: 100%;
+    height: 0.15rem;
+    background-color: #666879;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    transition: all 0.3s ease-in;
+    content: "";
+  }
+  #other-work-container .work-list a:hover {
+    color: #666879;
+    text-shadow: 0rem 0rem 1rem rgba(102, 104, 121, 0.8);
+  }
+  #other-work-container .work-list a:hover::after {
+    width: 100%;
+  }
+  #other-work-container .work-list a.show {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s linear calc(0.05s * var(--i)), text-shadow 0.3s ease-in, transform 0.5s ease-in-out calc(0.05s * var(--i));
+  }

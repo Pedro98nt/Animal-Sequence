@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Pedro</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div id="main" class='toucan'>
+            <div id='repeat'><i class="fas fa-redo-alt"></i></div>
+            <div id='other-work-container' :data-show="(show_menu) ? 'true' : 'false'">
+              <div class='menu-icon' @click='show_menu = !show_menu'>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class='menu-bg'></div>
+              <div class='title'>Other Pens</div>
+              <div class='work-list'>
+                <a target='blank' :href='w.link' v-for='(w, i) in works' :key="i" :style="{'--i': i + 1}" :class="{show: show_menu == true}">{{w.name}}</a>
+              </div>
+            </div>
+            <div id='wrapper'>
+              <div class='first-qtr'></div>
+              <div class="second-qtr"></div>
+              <div class="third-qtr"> </div>
+              <div class="fourth-qtr"> </div>
+            </div>
+         
+            <div id='inner-wrapper'>
+              <div class="part tail1"></div>
+              <div class="part tail2"></div>
+              <div class="part wing"></div>
+              <div class="part sun"></div>
+              <div class="part fox-ears">
+                <span></span><span></span>
+              </div>
+              <div class="part fox-head">
+                <div class="head"></div>
+                <div class="eyes"><span></span><span></span></div>
+              </div>
+         
+              <div class="part toucan-beak">
+                <div class="beak-inner"></div>
+              </div>
+              <div class="part body">
+                <div class="whale-eye"></div>
+                <div class="eye">
+                  <span></span>
+                </div>
+                <div class="part head">
+                </div>
+              </div>
+            </div>
+          </div>
+        
+        <script src="script.js" async defer></script>
+    </body>
+</html>
